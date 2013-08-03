@@ -27,6 +27,6 @@ website/
 5. Add "jQuery" , "jQuery-validation" and "jQuery-ui" -
 website/
   ├── js/
-  │   ├── jquery.min.js
-  │   ├── jquery-ui.min.js
-  │   ├── jquery.validate.js
+      ├── jquery.min.js
+      ├── jquery-ui.min.js
+      └── jquery.validate.js
