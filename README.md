@@ -14,19 +14,13 @@ $server , $db_user , $db_pass , $database
 3. Import mysql data from "test.sql"
 
 4. Add "twitter-bootstrap" files -
-website/
-  ├── css/
-  │   ├── bootstrap.min.css
-  │   ├── bootstrap-responsive.min.css
-  ├── js/
-  │   ├── bootstrap.min.js
-  └── img/
-      ├── glyphicons-halflings.png
-      └── glyphicons-halflings-white.png
+ 1. website/css/bootstrap.min.css
+ 2. website/css/bootstrap-responsive.min.css
+ 3. website/js/bootstrap.min.js
+ 4. website/img/glyphicons-halflings.png
+ 5. website/img/glyphicons-halflings-white.png
 
 5. Add "jQuery" , "jQuery-validation" and "jQuery-ui" -
-website/
-  ├── js/
-      ├── jquery.min.js
-      ├── jquery-ui.min.js
-      └── jquery.validate.js
+ 1. website/js/jquery.min.js
+ 2. website/js/jquery-ui.min.js
+ 3. website/js/jquery.validate.js
