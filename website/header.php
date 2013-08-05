@@ -4,10 +4,15 @@
 <html>
 <head>
 <title>
-<?php if(isset($title))  echo $title."-"; ?>
+<?php if(isset($title))	echo $title."-"; ?>
 uananddbz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require_once('headtag.php'); ?>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#loader").ajaxl("#target","<b>Loading...</b>");
+});
+</script>
 </head>
 <body>
 <div class="navbar">
