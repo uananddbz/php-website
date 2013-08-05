@@ -7,6 +7,11 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
+// for tooltip						 
+  $("[title]").mouseover(function(){
+$(this).tooltip('show');
+  });
+
 r={ to: ".icon-trash", className: "r" };
 b={ to: ".icon-trash", className: "b" };
   $(".da").click(function(){
@@ -48,7 +53,7 @@ $tbl='contacts';
 $id=$_SESSION["id"];
 ?>
       <div class="not"></div>
-    <div class="contacts">
+	  <div class="contacts">
       <?php
 //to display contacts
 
