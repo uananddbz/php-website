@@ -7,3 +7,5 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.js"></script>
 <script src="js/my.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/nav.js"></script>
