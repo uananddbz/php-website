@@ -4,11 +4,9 @@
 //loading animation
 
 
-
+					 
 // for tooltip						 
-  $("[title]").mouseover(function(){
-$(this).tooltip('show');
-  });
+  $("[title]").nav();
 
 
 
@@ -40,9 +38,6 @@ pr.removeClass("warning");
   }
 pr.addClass("success");
 el.next(".help-inline").html('<i class="icon-ok"></i>');
-			},
-			rules: {
-				username: "username",
 			}
 			
 			});
