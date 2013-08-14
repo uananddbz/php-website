@@ -1,6 +1,8 @@
-<?php $title='Login'; ?>
-<?php require_once('header.php'); ?>
 <?php
+$title='Login';
+$nav='<ul class="nav pull-right"><li class="active"><a>Please enter your username and password</a></li></ul>';
+require_once('header.php');
+
 $tbl_name='members';
 
 if (isset($_GET['link'])){$link=$_GET['link'];}
@@ -23,7 +25,7 @@ $mypassword = mysql_real_escape_string($mypassword);
 $sql="SELECT * FROM $tbl_name WHERE username='$myusername' and password='$mypassword'";
 $result=mysql_query($sql);
     $count = mysql_num_rows($result);
-  if ($count) {
+	if ($count) {
 while($row = mysql_fetch_array($result))
   {
 		$_SESSION['username'] = $myusername; //username
@@ -59,8 +61,16 @@ error('Wrong Username or Password');
 	echo '<input name="redirect" type="hidden" value="'.$link.'" />';
 	}
 	?>
-	
-      <input type="text" name="username" id="username" placeholder="Username">
+	<?php
+	if (isset($_GET['username'])) {
+	echo '
+	<input name="username" type="hidden" value="'.$_GET['username'].'" />
+	<span class="input-xlarge uneditable-input">'.$_GET['username'].' <a class="pull-right" href="login.php"><i title="change username" class="icon-remove-circle"></i></a></span>';
+	}
+	else
+echo  '<input type="text" name="username" id="username" placeholder="Username">';
+
+?>
     </div>
   </div>
   <div class="control-group">
