@@ -1,41 +1,12 @@
-<?php require_once("header.php"); ?>
-
-<script type="text/javascript">
-$(document).ready(function(){
-
-//for checking username
-  $.validator.addMethod("username", function(value, element) {
-el =$(element);
-			 pr=el.parents(".control-group");
-$.get("check_username.php",{name:value}, function(result){
-if (result=='true') {
- r=true;
-		if (pr.hasClass("info"))
-  {
-pr.removeClass("info");
-  }
-pr.addClass("success");
-}
-
-else {
-r=false;
-		if (pr.hasClass("success"))
-  {
-pr.removeClass("success");
-  }
-pr.addClass("info");
-}
-  });
-return r;
-	}, 'username already exist!'	
-	
-	);
-
-
-});
-</script>
+<?php $title='REGISTER';?>
+<?php
+$nav='<ul class="nav pull-right"><li class="active"><a>Please fill all details below</a></li></ul>';
+ require_once("header.php"); ?>
 
 <?php
+if (isset($_GET['link'])){$link=$_GET['link'];}
+if (isset($_POST['redirect'])){$redirect=$_POST['redirect'];}
+
 if (isset($_POST['username'])) {
 // username and password sent from form 
 $username=$_POST['username'];
@@ -68,7 +39,11 @@ $check.="</ul></div>";
 else {
 $dob=$y.'-'.$m.'-'.$d;
 insert ('username, password, name, email, country ,gender ,dob',"'$username' , '$password' , '$name', '$email', '$country' ,'$gender' ,'$dob'",$tbl);
-$check="<div class='alert alert-success'>success</div>";
+		if (isset($redirect)){
+header("location:login.php?link=".$redirect."&username=".$username);
+		}
+		else
+header("location:login.php?username=".$username);
 
 }
 
@@ -77,10 +52,30 @@ echo $check;
 
 ?>
 <form id="check-bs" class="form-horizontal" action="<?=$_SERVER['PHP_SELF']?>" method='post'>
+      <?php
+	if (isset($link))
+	{
+	echo '<input name="redirect" type="hidden" value="'.$link.'" />';
+	}
+	?>
   <div class="control-group">
     <label class="control-label" for="user">Username</label>
     <div class="controls">
-      <input type="text" name="username" value="<?php if(isset($_POST['username'])){echo $_POST['username'];} ?>" id="user" placeholder="Username" required="required">
+	<?php
+	if (isset($_GET['username'])) {
+	echo '
+	<input name="username" type="hidden" value="'.$_GET['username'].'" />
+	<span class="input-xlarge uneditable-input">'.$_GET['username'].' <a class="pull-right" href="register.php"><i title="change username" class="icon-remove-circle"></i></a></span>';
+	}
+	else {
+echo  '
+      <input type="text" name="username" value="';
+	  if(isset($_POST['username'])){echo $_POST['username'];}
+	  echo '" placeholder="Username" required="required">
+';
+}
+
+?>
 	  <span class="help-inline"></span>
 	  </div>
   </div>
