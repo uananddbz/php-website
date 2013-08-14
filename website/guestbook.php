@@ -1,5 +1,16 @@
 <?php $title='Guestbook';?>
 <?php require_once('header.php'); ?>
+<script type="text/javascript">
+$(document).ready(function(){
+$(".anim").hide();
+$(".sd").slideDown("slow",function() {
+});
+
+$(".show-guest").hs("<button class='btn btn-primary btn-large btn-block' >POST</button>");
+
+});
+</script>
+
 <?php
 $tbl='guestbook';
 
@@ -33,11 +44,12 @@ error(mysql_error());
   <div class="row-fluid">
     <div class="span2">
       <form id="check" action="#" method="post">
+	  <div id="guest-input">
         <?php
  if (isset($_SESSION["id"])) 
  {echo '<input type="hidden" name="id" value="'.$_SESSION["id"].'" >
 
- <span title="User login" class="input-block-level uneditable-input t" ><i class="icon-user"></i> <strong>'.$_SESSION["name"].'</strong></span>
+ <span title="User already login" class="input-block-level uneditable-input t" ><i class="icon-user"></i> <strong>'.$_SESSION["name"].'</strong></span>
 <input name="user" value="'.$_SESSION["name"].'" class="input-block-level" type="hidden">';}
 else 
 echo '<input type="hidden" name="id" value="null" >
@@ -45,16 +57,18 @@ echo '<input type="hidden" name="id" value="null" >
 
 ?>
         <textarea id="msg" name="msg" rows="5" placeholder="Message" class="input-block-level" required></textarea>
-        <button class='btn btn-large btn-primary btn-block' type='submit'>POST</button>
+		</div>
+        <button data="#guest-input" class='btn btn-large btn-block show-guest' >WRITE</button>
       </form>
     </div>
     <div class="span10">
+	<div class="anim sd">
       <?php
 
 $sql="SELECT * FROM $tbl";
 $result=mysql_query($sql);
     $count = mysql_num_rows($result);
-  if ($count) {
+	if ($count) {
 
 while($row = mysql_fetch_array($result))
   {
@@ -69,7 +83,7 @@ while($row = mysql_fetch_array($result))
   else 
   echo '<p class="muted">no messages</p>';
 
-?>
+?></div>
     </div>
   </div>
 </div>
