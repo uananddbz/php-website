@@ -1,7 +1,11 @@
 <?php $title='Contacts';?>
 <?php require_once('header.php'); ?>
 <?php require_once('auth.php'); ?>
-
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#loader").ajaxl("#target","<b>Loading...</b>");
+});
+</script>
 
 
 <div class="container-fluid">
