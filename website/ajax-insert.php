@@ -10,10 +10,9 @@ if (isset($_POST['id'])) {
 $id=$_POST['id'];
 $fname=$_POST['fname'];
 $lname=$_POST['lname'];
-$name=$fname.' '.$lname;
 $number=$_POST['number'];
 
-if (insert ('id, name, number',"'$id' , '$name' , '$number'",$tbl)) {
+if (insert ('id, fname, lname, number',"'$id' , '$fname' , '$lname' , '$number'",$tbl)) {
 echo 'true';}
 
 else
