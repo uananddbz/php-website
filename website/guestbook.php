@@ -3,10 +3,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
 $(".anim").hide();
-$(".sd").slideDown("slow",function() {
+$(".sd").slideDown(1000,function() {
 });
 
-$(".show-guest").hs("<button class='btn btn-primary btn-large btn-block' >POST</button>");
+$(".show-guest").hs(function() {
+$(this).replaceWith("<button class='btn btn-primary btn-large btn-block' >POST</button>");
+});
 
 });
 </script>
