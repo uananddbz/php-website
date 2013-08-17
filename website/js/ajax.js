@@ -1,6 +1,6 @@
 (function($) {
 
-    $.fn.ajaxl = function(target,wait) {  
+    $.fn.ajaxl = function(target,wait) {	
 
 
 
