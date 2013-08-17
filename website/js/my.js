@@ -5,9 +5,10 @@
 
 
 					 
-// for tooltip						 
-  $("[title]").nav();
-
+// for tooltip	
+  $("body").on("mouseover","[title]",function(){
+$(this).tooltip('show');
+});
 
 
 //for validate form with id 'check'
@@ -43,7 +44,15 @@ el.next(".help-inline").html('<i class="icon-ok"></i>');
 			});
 			
 //for alerts
-$(".alert").fadeOut(3000);
-
+  $("body").on("mouseleave",".alert",function(){
+$(this).fadeOut("slow");
 });
+
+//for nav
+
+  $(".nav").on("click","a",function(){
+$(this).toggleClass("active");
+});  
   
+  
+});
