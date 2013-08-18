@@ -58,7 +58,7 @@ b={ to: ".icon-trash", className: "b" };
 <div class="container-fluid">
 
   <div class="page-header">
-    <h1>Contacts <small>delete contacts here..</small></h1>
+    <h1>Contacts <small>delete contacts</small></h1>
   </div>
 
 
