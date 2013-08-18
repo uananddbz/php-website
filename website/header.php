@@ -1,92 +1,71 @@
-<?php $title='Guestbook';?>
+<?php $title='Edit guestbook';?>
 <?php require_once('header.php'); ?>
-<script type="text/javascript">
-$(document).ready(function(){
-$(".anim").hide();
-$(".sd").slideDown(1000,function() {
-});
 
-$(".show-guest").hs(function() {
-$(this).replaceWith("<button class='btn btn-primary btn-large btn-block' >POST</button>");
-});
+<div class="container-fluid">
+<div class="page-header">
+  <h1>Guestbook <small>edit</small></h1>
+  </div>
 
-});
-</script>
-
-<?php
+<div class="row-fluid">
+<div class="span1">
+  <a class="btn t" title="back" data-placement="right" href="guestbook.php"><i class="icon-chevron-left"></i></a>
+  <br/><br/>
+  </div>
+  <div class="span11">
+  
+  <?php
 $tbl='guestbook';
 
-if (isset($_POST['id'])) {
-
-$id=$_POST['id'];
-$msg=$_POST['msg'];
-
-if (isset($_POST['user'])) {
-
-$name=$_POST['user'];
+//delete all
+if (isset($_GET['da'])) {
+if ($_GET['da']=='1') 
+$sql="TRUNCATE $tbl";
+if (!mysql_query($sql))
+  {
+$msg= 'Error: ' . mysql_error();
+  }
+  else
+error('All Contact deleted !');
 }
 
-elseif (isset($_POST['guest'])) {
-$name=$_POST['guest'].' (guest)';
+//to delete contact
+if (isset($_GET['del'])) {
+$d=$_GET['del'];
+$sql="DELETE FROM $database.$tbl WHERE $tbl.`index` = $d;";
+if (!mysql_query($sql))
+  {
+$msg= 'Error: ' . mysql_error();
+  }
+  else
+info('Contact deleted !');
 }
 
-if(insert ('id, name, msg',"'$id' , '$name' , '$msg'",$tbl)) {
-success('message added.');
-}
-else
-error(mysql_error());
 
-}
+//to display alert message
+  if (isset($msg)) echo $msg;
 
 ?>
-<div class="page-header">
-  <h1>Guestbook <small>write your message</small></h1>
-</div>
-<div class="container">
-  <div class="row-fluid">
-    <div class="span2">
-      <form id="check" action="#" method="post">
-	  <div id="guest-input">
-        <?php
- if (isset($_SESSION["id"])) 
- {echo '<input type="hidden" name="id" value="'.$_SESSION["id"].'" >
 
- <span title="User already login" class="input-block-level uneditable-input t" ><i class="icon-user"></i> <strong>'.$_SESSION["name"].'</strong></span>
-<input name="user" value="'.$_SESSION["name"].'" class="input-block-level" type="hidden">';}
-else 
-echo '<input type="hidden" name="id" value="null" >
-<input id="name" name="guest" placeholder="Name" class="input-block-level" type="text" required>';
 
-?>
-        <textarea id="msg" name="msg" rows="5" placeholder="Message" class="input-block-level" required></textarea>
-		</div>
-        <button data="#guest-input" class='btn btn-large btn-block show-guest' >WRITE</button>
-      </form>
-    </div>
-    <div class="span10">
-	<div class="anim sd">
-      <?php
+<?php
+//to display contacts
 
 $sql="SELECT * FROM $tbl";
 $result=mysql_query($sql);
     $count = mysql_num_rows($result);
 	if ($count) {
-
+	  echo '<table class="table table-bordered table-striped"><thead><tr><th colspan="3"><a class="btn btn-block btn-large btn-danger t" title="Delete all contacts." href="'.$url.'?da=1">Delete all ('.$count.')</a></th></tr></thead><tbody id="selectable">';
+	    $n='1';
 while($row = mysql_fetch_array($result))
   {
-  $t=date("h:i d/m/y" , strtotime($row['time']));
-  
-		 echo '<blockquote><p>'.$row['msg'].'<span class="pull-right badge badge-info">'.$t.'</span></p><small>'.$row['name'].'</small></blockquote>';
+	echo '<tr><td><strong>'.$n.'.</strong> '.$row['msg'].'</td><td>'.$row['name'].'</td><td><a data-placement="right" title="Delete" class="btn btn-inverse t" href="'.$url.'?del='.$row['index'].'"> <i class="icon-trash icon-white"></i></a></td></tr>';
+	  $n++;
   }
-  
-
-  
+  	echo '</tbody></table>';
   }
   else 
-  echo '<p class="muted">no messages</p>';
-
-?></div>
-    </div>
-  </div>
+  echo '<p class="muted">no contacts</p>';
+?>
 </div>
+</div></div>
 <?php require_once('footer.php'); ?>
