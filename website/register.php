@@ -26,15 +26,14 @@ $result=mysql_query($sql);
     $row = mysql_num_rows($result);
 
 if($row || empty($username) || empty($password) || empty($name) || empty($email) || empty($country) || $gender=="gender" || $d=="date" || $m=="month" || $y=="year"  ){
-$check="<div class='alert alert-error alert-block'><ul>";
+
 if($row){
-$check.="<li><strong>Username</strong> already exist.</li>";
+error("<strong>Username</strong> already exist.");
 }
 if($d=="date" || $m=="month" || $y=="year"){
-$check.="<li>check your <strong>date of birth</strong>.</li>";
+error("check your <strong>date of birth</strong>.");
 }
 
-$check.="</ul></div>";
 }
 else {
 $dob=$y.'-'.$m.'-'.$d;
@@ -47,7 +46,6 @@ header("location:login.php?username=".$username);
 
 }
 
-echo $check;
 }
 
 ?>
@@ -123,15 +121,23 @@ echo  '
 <?php
 for ($i=1; $i<=9; $i++)
   {
+  if (isset($d)) {
   if ($d==$i) {
   echo "<option selected='selected'>$i</option>";}
+    else
+  echo"<option>$i</option>";
+  }
   else
   echo"<option>$i</option>";
   }
   for ($i=10; $i<=31; $i++)
   {
+  if (isset($d)) {
   if ($d==$i) {
   echo "<option selected='selected'>$i</option>";}
+    else
+  echo"<option>$i</option>";
+  }
   else
   echo"<option>$i</option>";
   }
@@ -143,15 +149,24 @@ for ($i=1; $i<=9; $i++)
 <?php
 for ($i=1; $i<=9; $i++)
   {
+  if (isset($m)) {
   if ($m==$i) {
   echo "<option selected='selected'>$i</option>";}
+    else
+  echo"<option>$i</option>";
+  
+  }
   else
   echo"<option>$i</option>";
   }
   for ($i=10; $i<=12; $i++)
   {
+  if (isset($m)) {
   if ($m==$i) {
   echo "<option selected='selected'>$i</option>";}
+    else
+  echo"<option>$i</option>";
+  }
   else
   echo"<option>$i</option>";
   }
@@ -163,8 +178,12 @@ for ($i=1; $i<=9; $i++)
 <?php
 for ($i=1980; $i<=2009; $i++)
   {
+  if (isset($y)) {
   if ($y==$i) {
   echo "<option selected='selected'>$i</option>";}
+    else
+  echo"<option>$i</option>";
+  }
   else
   echo"<option>$i</option>";
   }
