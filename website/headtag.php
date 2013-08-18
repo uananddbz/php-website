@@ -8,5 +8,5 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.js"></script>
 <script src="js/my.js"></script>
-<script src="js/ajax.js"></script>
 <script src="js/hs.js"></script>
+<script src="js/jquery.bootstrap-growl.min.js"></script>
