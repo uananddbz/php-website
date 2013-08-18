@@ -1,8 +1,6 @@
  
   $(document).ready(function(){
 
-//loading animation
-
 
 					 
 // for tooltip	
@@ -43,10 +41,9 @@ el.next(".help-inline").html('<i class="icon-ok"></i>');
 			
 			});
 			
-//for alerts
-  $("body").on("mouseleave",".alert",function(){
-$(this).fadeOut("slow");
-});
+
+
+
 
 //for nav
 
