@@ -1,20 +1,21 @@
 <?php
+
 //error notification
 function error($msg)
 {
-  echo '<div class="alert alert-error"><h4>Error</h4><p>'. $msg.'</p></div>';
+  echo '<script>$.bootstrapGrowl("<b>'.$msg.'</b>",{type:"error"});</script>';
 }
 
 //success notification
 function success($msg)
 {
-  echo '<div class="alert alert-success">'.$msg.'</div>';
+  echo '<script>$.bootstrapGrowl("<b>'.$msg.'</b>",{type:"success"});</script>';
 }
 
 //info notification
 function info($msg)
 {
-  echo '<div class="alert alert-info">'.$msg.'</div>';
+  echo '<script>$.bootstrapGrowl("<b>'.$msg.'</b>",{type:"info"});</script>';
 }
 
 
@@ -27,7 +28,7 @@ set_error_handler("customError");
 //error handler function
 function customError($errno, $errstr)
   {
-  echo '<div class="alert alert-error"><h4>Error</h4><p>'. $errstr.'</p></div>';
+  error($errstr);
   }
 
 
@@ -50,33 +51,33 @@ return true;
 }
 //time ago
 function prettyDate($date){
-  $time = strtotime($date);
+	$time = strtotime($date);
 	$now = time();
 	$ago = $now - $time;
 	if($ago < 60){
 		$when = round($ago);
 		$s = ($when == 1)?"second":"seconds";
-		return "$when $s ago";
+		return "$when $s";
 	}elseif($ago < 3600){
 		$when = round($ago / 60);
 		$m = ($when == 1)?"minute":"minutes";
-		return "$when $m ago";
+		return "$when $m";
 	}elseif($ago >= 3600 && $ago < 86400){
 		$when = round($ago / 60 / 60);
 		$h = ($when == 1)?"hour":"hours";
-		return "$when $h ago";
+		return "$when $h";
 	}elseif($ago >= 86400 && $ago < 2629743.83){
 		$when = round($ago / 60 / 60 / 24);
 		$d = ($when == 1)?"day":"days";
-		return "$when $d ago";
+		return "$when $d";
 	}elseif($ago >= 2629743.83 && $ago < 31556926){
 		$when = round($ago / 60 / 60 / 24 / 30.4375);
 		$m = ($when == 1)?"month":"months";
-		return "$when $m ago";
+		return "$when $m";
 	}else{
 		$when = round($ago / 60 / 60 / 24 / 365);
 		$y = ($when == 1)?"year":"years";
-		return "$when $y ago";
+		return "$when $y";
 	}
 }
 
