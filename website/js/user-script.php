@@ -2,8 +2,8 @@
 
  $(".profile-nav").popover({
 html:true,
-content:'<table class="table table-condensed table-bordered"><tr><th scope="row">NAME:</th><td><?=$_SESSION['name'];?></td></tr><tr><th scope="row">EMAIL:</th><td><?=$_SESSION['email']?></td></tr><tr><th scope="row">COUNTRY:</th><td><?=$_SESSION['country']?></td></tr><tr><th scope="row">GENDER:</th><td><?=$_SESSION['gender']?></td></tr><tr><th scope="row">DATE OF BIRTH:</th><td><?=$_SESSION['dob']?><i data-placement="bottom" title="<?=prettyDate($_SESSION['dob'])?>" class="icon-info-sign"></i></td></tr></table>',
-title:'profile'
+content:'<h4><?=$_SESSION['name'];?> <small>(<?=$_SESSION['gender']?>)</small></h4><address><strong><small><?=$_SESSION['email']?></small></strong><br/><small>FROM</small> - <strong><small><?=$_SESSION['country']?></small></strong><br/><small>AGE -</small><strong> <small><span data-html="true" data-placement="bottom" title="<small>as on</small> <?=$_SESSION['dob']?>"><?=prettyDate($_SESSION['dob'])?></span></small></strong><br/></address>',
+title:'Profile <a href="edit_profile.php" class="pull-right">edit</a>'
 });
 
 
@@ -44,7 +44,7 @@ $.get("se.php",{se:data} , function(result){
  data=$("#contact-form").serialize();
   $.post("ajax-insert.php",data,function(result){
   if (result=='true') {
-	$.bootstrapGrowl("<b>contact</b>",{type:"success"});
+	$.bootstrapGrowl("<b>contact added!</b>",{type:"success"});
 	
  	form.reset();
 
