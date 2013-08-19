@@ -1,6 +1,6 @@
 <?php $title='Guestbook';?>
 <?php require_once('header.php'); ?>
-<script type="text/javascript">
+  <script type="text/javascript">
 $(document).ready(function(){
 $(".anim").hide();
 $(".sd").slideDown(1000,function() {
@@ -12,8 +12,7 @@ $(this).replaceWith("<button class='btn btn-primary btn-large btn-block' >POST</
 
 });
 </script>
-
-<?php
+  <?php
 $tbl='guestbook';
 
 if (isset($_POST['id'])) {
@@ -31,7 +30,7 @@ $name=$_POST['guest'].' (guest)';
 }
 
 if(insert ('id, name, msg',"'$id' , '$name' , '$msg'",$tbl)) {
-success('message added.');
+success('<h4>Thank You!</h4><b>Your message added.</b>');
 }
 else
 error(mysql_error());
@@ -39,15 +38,15 @@ error(mysql_error());
 }
 
 ?>
-<div class="page-header">
-  <h1>Guestbook <small>write your message</small></h1>
-</div>
-<div class="container">
-  <div class="row-fluid">
-    <div class="span2">
-      <form id="check" action="#" method="post">
-	  <div id="guest-input">
-        <?php
+  <div class="page-header">
+    <h1>Guestbook <small>write your message</small></h1>
+  </div>
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span2">
+        <form id="check" action="#" method="post">
+          <div id="guest-input">
+            <?php
  if (isset($_SESSION["id"])) 
  {echo '<input type="hidden" name="id" value="'.$_SESSION["id"].'" >
 
@@ -58,14 +57,14 @@ echo '<input type="hidden" name="id" value="null" >
 <input id="name" name="guest" placeholder="Name" class="input-block-level" type="text" required>';
 
 ?>
-        <textarea id="msg" name="msg" rows="5" placeholder="Message" class="input-block-level" required></textarea>
-		</div>
-        <button data="#guest-input" class='btn btn-large btn-block show-guest' >WRITE</button>
-      </form>
-    </div>
-    <div class="span10">
-	<div class="anim sd">
-      <?php
+            <textarea id="msg" name="msg" rows="5" placeholder="Message" class="input-block-level" required></textarea>
+          </div>
+          <button data="#guest-input" class='btn btn-large btn-block show-guest' >WRITE</button>
+        </form>
+      </div>
+      <div class="span10">
+        <div class="anim sd">
+          <?php
 
 $sql="SELECT * FROM $tbl";
 $result=mysql_query($sql);
@@ -85,8 +84,9 @@ while($row = mysql_fetch_array($result))
   else 
   echo '<p class="muted">no messages</p>';
 
-?></div>
+?>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<?php require_once('footer.php'); ?>
+  <?php require_once('footer.php'); ?>
