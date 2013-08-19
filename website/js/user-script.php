@@ -11,7 +11,7 @@ title:'Profile <a href="edit_profile.php" class="pull-right">edit</a>'
 $(".contact-nav").popover({
 html:true,
 content:'<div class="not"></div><form id="contact-form"><input type="hidden" name="id" value="<?=$_SESSION["id"];?>"><div class="row-fluid"><div class="span6"><input class="input-block-level" placeholder="first" type="text" name="fname" required></div><div class="span6"><input class="input-block-level" placeholder="last" type="text" name="lname" required></div></div><input class="input-block-level" placeholder="Number" type="tel" name="number" required><button class="btn btn-primary btn-block">Save</button></form><div style="overflow-y:auto;" class="result-contact"></div>',
-title:'<div class="row-fluid"><div class="span8"><input class="se input-block-level search-query" placeholder="search" name="se" type="text" /></div><div class="span4"><div class="btn-group"><button data="#contact-form" class="btn btn-mini add-contact"><i  title="add" class="icon-plus" data-placement="bottom"></i></button><a href="edit-contacts.php" class="btn btn-mini"><i title="edit" class="icon-edit" data-placement="bottom"></i></a></div></div></div>'
+title:'<div class="row-fluid"><div class="span8"><input class="se input-block-level search-query" placeholder="search" name="se" type="text" /></div><div class="span4"><div class="btn-group"><button data="#contact-form" class="btn btn-mini add-contact"><i  title="add" class="icon-plus" data-placement="bottom"></i></button><a href="edit_contacts.php" class="btn btn-mini"><i title="edit" class="icon-edit" data-placement="bottom"></i></a></div></div></div>'
 });
 $(".contact-nav").click(function() {
 	mh=$("body").height();
