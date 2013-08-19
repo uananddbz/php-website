@@ -3,19 +3,19 @@
 //error notification
 function error($msg)
 {
-  echo '<script>$.bootstrapGrowl("<b>'.$msg.'</b>",{type:"error"});</script>';
+  echo '<script>$.bootstrapGrowl("'.$msg.'",{type:"error"});</script>';
 }
 
 //success notification
 function success($msg)
 {
-  echo '<script>$.bootstrapGrowl("<b>'.$msg.'</b>",{type:"success"});</script>';
+  echo '<script>$.bootstrapGrowl("'.$msg.'",{type:"success"});</script>';
 }
 
 //info notification
 function info($msg)
 {
-  echo '<script>$.bootstrapGrowl("<b>'.$msg.'</b>",{type:"info"});</script>';
+  echo '<script>$.bootstrapGrowl("'.$msg.'",{type:"info"});</script>';
 }
 
 
