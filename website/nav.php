@@ -10,7 +10,7 @@ echo '
   <ul class="nav">
   <li>
             <a href="#" data-placement="bottom" class="contact-nav" data-toggle="popover">Contacts <span class="badge badge-inverse">'.$count_contact.'</span></a></li>
-  <li><a data-placement="bottom" class="profile-nav" data-toggle="popover" href="#"><i class="icon-user icon-white"></i></a></li></ul>
+  <li><a data-placement="bottom" class="profile-nav" data-title="user" data-html="true" data-toggle="popover" href="#"><i class="icon-user icon-white"></i></a></li></ul>
   <ul class="nav pull-right">
   <li><a href="'.$url.'?logout=1" title="logout" data-placement="bottom"><i class="icon-off icon-white"></i></a></li></ul>';
 }
