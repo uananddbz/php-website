@@ -59,7 +59,7 @@ echo '<input type="hidden" name="id" value="null" >
 ?>
             <textarea id="msg" name="msg" rows="5" placeholder="Message" class="input-block-level" required></textarea>
           </div>
-          <button data="#guest-input" class='btn btn-large btn-block show-guest' >WRITE</button>
+          <button data-target="#guest-input" class='btn btn-large btn-block show-guest' >WRITE</button>
         </form>
       </div>
       <div class="span10">
