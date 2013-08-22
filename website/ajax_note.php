@@ -11,7 +11,7 @@ $name=$_POST['name'];
 $value=$_POST['value'];
 $index=$_POST['pk'];
 
-mysql_query("UPDATE  `test`.`contacts` SET  `$name` =  '$value' WHERE  `contacts`.`index` ='$index';");
+mysql_query("UPDATE  `test`.`notes` SET  `$name` =  '$value' WHERE  `notes`.`index` ='$index';");
 
 }
 ?>
