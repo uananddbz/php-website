@@ -1,21 +1,51 @@
 <?php
 
 //error notification
-function error($msg)
+function errorbr($msg)
 {
   echo '<script>$.bootstrapGrowl("'.$msg.'",{type:"error"});</script>';
 }
 
 //success notification
-function success($msg)
+function successbr($msg)
 {
   echo '<script>$.bootstrapGrowl("'.$msg.'",{type:"success"});</script>';
 }
 
 //info notification
-function info($msg)
+function infobr($msg)
 {
   echo '<script>$.bootstrapGrowl("'.$msg.'",{type:"info"});</script>';
+}
+
+//info notification
+function warningbr($msg)
+{
+  echo '<script>$.bootstrapGrowl("'.$msg.'",{type:"warning"});</script>';
+}
+
+//info notification
+function warning($msg)
+{
+  echo '<div class="alert"><a href="#" class="close" onclick="$(this).parent(\'.alert\').hide(\'drop\',\'slow\');">&times;</a>'.$msg.'</div>';
+}
+
+//error notification
+function error($msg)
+{
+  echo '<div class="alert alert-error"><a href="#" class="close" onclick="$(this).parent(\'.alert\').hide(\'drop\',\'slow\');">&times;</a>'.$msg.'</div>';
+}
+
+//success notification
+function success($msg)
+{
+  echo '<div class="alert alert-success"><a href="#" class="close" onclick="$(this).parent(\'.alert\').hide(\'drop\',\'slow\');">&times;</a>'.$msg.'</div>';
+}
+
+//info notification
+function info($msg)
+{
+  echo '<div class="alert alert-info"><a href="#" class="close" onclick="$(this).parent(\'.alert\').hide(\'drop\',\'slow\');">&times;</a>'.$msg.'</div>';
 }
 
 
