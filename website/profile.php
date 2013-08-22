@@ -14,12 +14,13 @@ $.fn.editable.defaults.url = 'ajax_update.php';
 $.fn.editable.defaults.pk = 1;
 $.fn.editable.defaults.showbuttons = false;
 $.fn.editable.defaults.onblur = 'submit';
-$.fn.editable.defaults.highlight = 'orange';
+$.fn.editable.defaults.highlight = false;
 $.fn.editable.defaults.type = 'text';
 $.fn.editable.defaults.error = function(response, newValue) {
 $.bootstrapGrowl("<h4>error ("+response.status+")</h4><p>"+response.statusText+"</p>",{type:"error"})
 };
 $.fn.editable.defaults.success = function(response, newValue) {
+$(this).parent("td").parent("tr").effect("highlight","slow");
 $.bootstrapGrowl("<b>updated successfully!</b>",{type:"success"})
 };
 
@@ -53,13 +54,20 @@ $('#dob').editable({
 });
 </script>
 
-<div class="container">
+<div class="container-fluid">
   <div class="page-header">
-    <h1>Profile - edit</h1>
+    <h1>Profile <small> - <?=$_SESSION["username"]?></small></h1>
   </div>
   <table class="table table-bordered table-hover">
     <?php
-echo '<tr><th scope="row">NAME:</th><td><a id="name">'.$_SESSION["name"].'</a></td></tr><tr><th scope="row">EMAIL:</th><td><a id="email">'.$_SESSION['email'].'</a></td></tr><tr><th scope="row">COUNTRY:</th><td><a id="country">'.$_SESSION['country'].'</a></td></tr><tr><th scope="row">GENDER:</th><td><a id="gender">'.$_SESSION['gender'].'</a></td></tr><tr><th scope="row">DATE OF BIRTH:</th><td><a id="dob">'.$_SESSION['dob'].'</a></td></tr>';
+echo '<tr><th scope="row">NAME:</th><td><a id="name">'.$_SESSION["name"].'</a></td></tr><tr><th scope="row">EMAIL:</th><td><a id="email">'.$_SESSION['email'].'</a></td></tr><tr><th scope="row">COUNTRY:</th><td><a id="country">'.$_SESSION['country'].'</a></td></tr><tr><th scope="row">GENDER:</th><td><a id="gender">'.$_SESSION['gender'].'</a></td></tr><tr><th scope="row">DATE OF BIRTH:</th><td><a data-viewformat="yyyy-mm-dd" id="dob">';
+if ($_SESSION['dob']=='0000-00-00') {
+echo '';
+}
+else {
+echo $_SESSION['dob'];
+}
+echo'</a></td></tr>';
 
 ?>
   </table>
