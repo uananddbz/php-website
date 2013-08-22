@@ -1,17 +1,18 @@
 		  <?php if(isset($_SESSION['username'])){
-$tbl_name='contacts';
+$tbl_name='notes';
 $id=$_SESSION["id"];
 
-$sql="SELECT * FROM $tbl_name WHERE id='$id' ORDER BY fname";
+$sql="SELECT * FROM $tbl_name WHERE id='$id' ORDER BY name";
 $result=mysql_query($sql);
-    $count_contact = mysql_num_rows($result);
+    $count_note = mysql_num_rows($result);
 echo '
 
   <ul class="nav">
   <li>
-            <a href="#" data-placement="bottom" class="contact-nav" data-toggle="popover">Contacts <span class="badge badge-inverse">'.$count_contact.'</span></a></li>
-  <li><a data-placement="bottom" class="profile-nav" data-title="user" data-html="true" data-toggle="popover" href="#"><i class="icon-user icon-white"></i></a></li></ul>
+            <a href="#" data-placement="bottom" class="note-nav" data-toggle="popover">Notes <span class="badge badge-inverse">'.$count_note.'</span></a></li>
+  </ul>
   <ul class="nav pull-right">
+  <li><a data-placement="bottom" title="Profile" href="profile.php"><i class="icon-user icon-white"></i></a></li>
   <li><a href="'.$url.'?logout=1" title="logout" data-placement="bottom"><i class="icon-off icon-white"></i></a></li></ul>';
 }
 else 
