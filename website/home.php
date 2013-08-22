@@ -5,7 +5,7 @@
 
 <div class="container">
 	  
-	  <a class="btn btn-block btn-large" href="edit-contacts.php">Contacts <span class="badge badge-inverse"><?=$count_contact;?></span></a>
+	  <a class="btn btn-block btn-large" href="note.php">Notes <span class="badge badge-inverse"><?=$count_note;?></span></a>
 
 </div>
 
