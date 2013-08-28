@@ -23,6 +23,10 @@ require_once('js/user-script.php');
 </head>
 <body>
 <div class="page-wrap">
+<div class="loading">
+<div class="progress progress-warning progress-striped active">
+  <div class="bar" style="width: 100%;"></div>
+</div></div>
 <div class="navbar">
   <div class="navbar-inner  my-nav"> <a class="brand" href="index.php">UANANDDBZ</a>
     <?php if(isset($nav))echo $nav; else {require_once('nav.php');} ?>
