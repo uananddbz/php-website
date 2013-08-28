@@ -1,6 +1,16 @@
  
   $(document).ready(function(){
 
+  $(".loading").hide();
+$(document).ajaxStart(function(){
+$(".progress-success").removeClass("progress-success").addClass("progress-warning");
+  $(".loading").fadeToggle("fast");
+});
+
+$(document).ajaxStop(function(){
+$(".progress-warning").removeClass("progress-warning").addClass("progress-success");
+  $(".loading").fadeToggle("fast");
+});
 
 					 
 // for tooltip	
