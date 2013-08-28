@@ -1,2 +1,0 @@
-8/28/2013 added ajax progress bar
-8/28/2013 created change_log file 
